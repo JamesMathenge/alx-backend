@@ -39,19 +39,18 @@ class Server:
             }
         return self.__indexed_dataset
 
-    def get_hyper_index(self, index: int = None,
-                        page_size: int = 10) -> Dict:
-        """ return all data"""
-
+    def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
+        """Return data indexed from a dataset.
+        """
         if index is None:
             index = 0
 
-        # validate the index
+        # Validate the index
         assert isinstance(index, int)
         assert 0 <= index < len(self.indexed_dataset())
         assert isinstance(page_size, int) and page_size > 0
 
-        data = []  # collect all indexed data
+        data = []  # Collect all indexed data
         next_index = index + page_size
 
         for value in range(index, next_index):
